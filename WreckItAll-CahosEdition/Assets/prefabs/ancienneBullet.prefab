@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 4318582685108813044}
   m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
   m_LocalPosition: {x: -0.58300006, y: -0.010000467, z: 0.010000467}
-  m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
+  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_Children: []
   m_Father: {fileID: 3064671261011047879}
   m_RootOrder: 0
@@ -4819,7 +4819,7 @@ GameObject:
   - component: {fileID: 5530544420546601332}
   - component: {fileID: 5707425202326866800}
   m_Layer: 0
-  m_Name: bullet
+  m_Name: ancienneBullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4931,5 +4931,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   thrust: 10
-  rb: {fileID: 0}
-  myPrefab: {fileID: 0}

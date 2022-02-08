@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class displacer : MonoBehaviour
 {
-    public float thrust = 1.0f;
+    public float speed = 1.0f;
     
 
     void Start()
     {   
         Rigidbody rb = GetComponent<Rigidbody>();
-        rb.AddForce(0, thrust, 0, ForceMode.Impulse);
+        rb.AddForce(speed, 0, 0, ForceMode.Impulse);
     }
 }
