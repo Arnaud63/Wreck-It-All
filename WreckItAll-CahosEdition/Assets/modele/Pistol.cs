@@ -5,7 +5,7 @@ using Zenject;
 
 public class Pistol : AGun
 {
-    public Pistol() : base(6, 2)
+    public Pistol() : base(6, 2, 0.1f)
     {
     }
 }

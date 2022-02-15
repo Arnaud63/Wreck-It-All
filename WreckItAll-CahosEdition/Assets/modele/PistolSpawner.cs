@@ -2,17 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Zenject;
-
 public class PistolSpawner : IWeaponSpawner
 {
     [Inject]
-    private Pistol pistol;
-    private GameObject pistolPrefab;
-
-    void IWeaponSpawner.SpawnWeapon()
+    public GunManager gunManager;
+    public void SpawnWeapon(GameObject prefab, float spawnX, float spawnY, float spawnZ)
     {
-        pistolPrefab = (GameObject) Resources.Load("prefabs/Gun");
-        GameObject.Instantiate(pistolPrefab, new Vector3(0, 3, 0), Quaternion.identity);
-        //Logique de spawn d'un pistol
+        if (prefab == null) throw new MissingComponentException("Le préfab de gun n'a pas été renseigné");
+        var tmp = GameObject.Instantiate(prefab, new Vector3(spawnX, spawnY, spawnZ), Quaternion.identity);
+        tmp.GetComponent<GunShooter>().gunManager = gunManager;
+        gunManager.LinkGameObjectWithGunModel(tmp, new Pistol());
     }
 }

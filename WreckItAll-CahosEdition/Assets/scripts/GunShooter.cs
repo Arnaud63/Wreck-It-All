@@ -1,29 +1,42 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Zenject;
 
-public class GunShooter : MonoBehaviour
+public class GunShooter : MonoBehaviour, IShooter
 {
-    public GameObject bullet;
+    [SerializeField]
+    private GameObject bulletPrefab;
 
-    public delegate void BulletShootedHandler();
-    public event BulletShootedHandler OnBulletShooted;
+    //[Inject]
+    public GunManager gunManager { get; set; }
 
-    // Start is called before the first frame update
-    void Start()
+    private void Awake()
     {
-        
+        if (bulletPrefab == null) throw new MissingComponentException("Le préfab de bullet n'a pas été renseigné");
     }
 
-    void Update(){
+    public void Update(){
         if (Input.GetButtonDown("Fire1")){
-            OnBulletShooted?.Invoke();
+            gunManager.shoot(this.gameObject, this);
         }
     }
 
+    public void WaitDelay(float delay)
+    {
+        Invoke("AllowShootCall", delay);
+    }
+
+    public void AllowShootCall()
+    {
+        gunManager.AllowShoot(this.gameObject);
+    }
+
     public void shootBullet(){
-        var bulletPrefab = (GameObject) Resources.Load("prefabs/BulletPrefab");
-        var bullet = GameObject.Instantiate(bulletPrefab, new Vector3(0, 3, 0), Quaternion.identity);
-        Destroy(bullet, 2);
+        Debug.Log("tire");
+        var bullet = GameObject.Instantiate(bulletPrefab,
+            this.gameObject.transform.position,
+            this.gameObject.transform.rotation);
+        Destroy(bullet, 5);
     }
 }

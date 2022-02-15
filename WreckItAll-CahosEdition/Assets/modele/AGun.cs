@@ -7,11 +7,30 @@ public abstract class AGun : IWeapon
     protected int magazine;
     protected int magazineSize;
     protected float reloadingTime;
+    public float FireDelay {
+        get {
+            return fireDelay;
+        }
+    }
+    protected float fireDelay;
+    public bool CanShoot
+    {
+        get
+        {
+            return canShoot;
+        }
+        set
+        {
+            canShoot = value;
+        }
+    }
+    private bool canShoot;
 
-    protected AGun(int magazineSize, int reloadingTime){
+    protected AGun(int magazineSize, float reloadingTime, float fireDelay){
         this.magazineSize = 30;
         magazine = magazineSize;
         this.reloadingTime = reloadingTime;
+        canShoot = true;
         Debug.Log("Arme instanciée");
     }
 
@@ -19,9 +38,9 @@ public abstract class AGun : IWeapon
         return magazine == 0;
     }
 
-    public void Reload(){
+    public float Reload(){
         magazine = magazineSize;
-        Debug.Log("realod");
+        return reloadingTime;
     }
 
     public void DecreaseNbBulletInMagazine(){
