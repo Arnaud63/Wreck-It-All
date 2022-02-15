@@ -20,4 +20,10 @@ public class GunShooter : MonoBehaviour
             OnBulletShooted?.Invoke();
         }
     }
+
+    public void shootBullet(){
+        var bulletPrefab = (GameObject) Resources.Load("prefabs/BulletPrefab");
+        var bullet = GameObject.Instantiate(bulletPrefab, new Vector3(0, 3, 0), Quaternion.identity);
+        Destroy(bullet, 2);
+    }
 }
