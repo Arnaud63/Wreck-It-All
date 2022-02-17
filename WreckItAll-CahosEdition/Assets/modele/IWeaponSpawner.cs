@@ -4,5 +4,5 @@ using UnityEngine;
 
 public interface IWeaponSpawner
 {
-    void SpawnWeapon();
+    void SpawnWeapon(GameObject prefab, float spawnX, float spawnY, float spawnZ);
 }

@@ -8,9 +8,18 @@ public class SpawnPistol : MonoBehaviour
     [Inject]
     private PistolSpawner pistolSpawner;
 
+    [SerializeField]
+    private GameObject pistolPrefab;
+    [SerializeField]
+    private float spawnX;
+    [SerializeField]
+    private float spawnY;
+    [SerializeField]
+    private float spawnZ;
+
     void Awake()
     {
-        pistolSpawner.SpawnWeapon();
+        pistolSpawner.SpawnWeapon(pistolPrefab, spawnX, spawnY, spawnZ);
     }
     // Start is called before the first frame update
     void Start()

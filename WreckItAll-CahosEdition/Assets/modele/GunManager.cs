@@ -5,35 +5,44 @@ using Zenject;
 
 public class GunManager
 {
+    private Dictionary<GameObject, AGun> gunModelLinks;//def le hashcode
 
-    /*private GameObject gunPrefab;
-    private GunShooter gunShooter;
-
-    public AGun gun;
-
-    public void OnGunShoot(){
-        if (gun.IsMagazineEmpty()){
-            //Invoke(gun.reload(), 5.0f);
-        }
-        else{
-            gun.shootBullet();
-            gunShooter.shootBullet();
-        }
-    }
-
-    // Start is called before the first frame update
     public GunManager()
     {
-        //gun = new Gun(30);
-        gunPrefab = (GameObject) Resources.Load("prefabs/Gun");
-        var instPrefab = GameObject.Instantiate(gunPrefab, new Vector3(0, 3, 0), Quaternion.identity);
-        gunShooter = instPrefab.GetComponent<GunShooter>();
-        gunShooter.OnBulletShooted += OnGunShoot;
+        gunModelLinks = new Dictionary<GameObject, AGun>();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void LinkGameObjectWithGunModel(GameObject gameObject, AGun gun)
     {
-        
-    }*/
+        gunModelLinks.Add(gameObject, gun);
+    }
+
+    public void shoot(GameObject gunGameObject, IShooter shooter)
+    {
+        if (!(gunModelLinks.ContainsKey(gunGameObject))) 
+            throw new KeyNotFoundException("Ce gun n'a pas de modèle métier lié");
+        AGun gunModel = gunModelLinks[gunGameObject];
+        if (gunModel.CanShoot)
+        {
+            if (gunModel.IsMagazineEmpty())
+            {
+                gunModel.CanShoot = false;
+                shooter.WaitDelay(gunModel.Reload());
+            }
+            else
+            {
+                gunModel.DecreaseNbBulletInMagazine();
+                shooter.shootBullet();
+                gunModel.CanShoot = false;
+                shooter.WaitDelay(gunModel.FireDelay);
+            }
+        }
+    }
+
+    public void AllowShoot(GameObject gunGameObject)
+    {
+        if (!(gunModelLinks.ContainsKey(gunGameObject)))
+            throw new KeyNotFoundException("Ce gun n'a pas de modèle métier lié");
+        gunModelLinks[gunGameObject].CanShoot = true;
+    }
 }
