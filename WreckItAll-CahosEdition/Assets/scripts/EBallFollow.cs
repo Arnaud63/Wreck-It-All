@@ -1,33 +1,31 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Assets.modele;
+using Zenject;
 
-public class EnemyFollow : MonoBehaviour
+public class EBallFollow : MonoBehaviour
 {
+    public EBall eball = new EBall("goomba");
     public GameObject EntityToFollow;
 
     // Start is called before the first frame update
     void Start()
     {
+        Debug.Log(this.eball.Name);
         Destroy(GetComponent<GameObject>(), 5);
         this.EntityToFollow = GameObject.FindGameObjectWithTag("Player");
-        InvokeRepeating("Follow", 2.0f, 0.001f);
+        InvokeRepeating("Follow", 0.0f, 0.5f);
     }
 
-    // Update is called once per frame
-    void Update()
+    void Follow()
     {
-        
-    }
-
-    void Follow() {
         Vector3 self_position = this.GetComponent<Transform>().position;
         Vector3 follow_force = new Vector3(this.EntityToFollow.GetComponent<Transform>().position.x - self_position.x,
                                             this.EntityToFollow.GetComponent<Transform>().position.y - self_position.y,
                                             this.EntityToFollow.GetComponent<Transform>().position.z - self_position.z);
-        follow_force.x = follow_force.x > 5 ? 5 : follow_force.x;
-        follow_force.y = follow_force.y > 5 ? 5 : follow_force.y;
-        follow_force.z = follow_force.z > 5 ? 5 : follow_force.z;
-        this.GetComponent<Rigidbody>().AddForce(follow_force);
+        follow_force.Normalize();
+        follow_force = follow_force * eball.Vitesse;
+        this.GetComponent<Rigidbody>().AddForce(follow_force, ForceMode.VelocityChange);
     }
 }

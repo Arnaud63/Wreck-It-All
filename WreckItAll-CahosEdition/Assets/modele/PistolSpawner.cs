@@ -9,9 +9,9 @@ public class PistolSpawner : IWeaponSpawner
     private Pistol pistol;
     private GameObject pistolPrefab;
 
-    void IWeaponSpawner.SpawnWeapon()
+    public void SpawnWeapon()
     {
-        pistolPrefab = (GameObject) Resources.Load("prefabs/Gun");
+        pistolPrefab = (GameObject)Resources.Load("prefabs/Gun");
         GameObject.Instantiate(pistolPrefab, new Vector3(0, 3, 0), Quaternion.identity);
         //Logique de spawn d'un pistol
     }
