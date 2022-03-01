@@ -5,44 +5,23 @@ using Zenject;
 
 public class GunManager
 {
-    private Dictionary<GameObject, AGun> gunModelLinks;//def le hashcode
-
-    public GunManager()
+    public bool CanShoot(AGun gun)
     {
-        gunModelLinks = new Dictionary<GameObject, AGun>();
+        return gun.CanShoot;
     }
 
-    public void LinkGameObjectWithGunModel(GameObject gameObject, AGun gun)
+    public bool IsMagazineEmpty(AGun gun)
     {
-        gunModelLinks.Add(gameObject, gun);
+        return gun.IsMagazineEmpty();
     }
 
-    public void shoot(GameObject gunGameObject, IShooter shooter)
+    public void Reload(AGun gun)
     {
-        if (!(gunModelLinks.ContainsKey(gunGameObject))) 
-            throw new KeyNotFoundException("Ce gun n'a pas de modèle métier lié");
-        AGun gunModel = gunModelLinks[gunGameObject];
-        if (gunModel.CanShoot)
-        {
-            if (gunModel.IsMagazineEmpty())
-            {
-                gunModel.CanShoot = false;
-                shooter.WaitDelay(gunModel.Reload());
-            }
-            else
-            {
-                gunModel.DecreaseNbBulletInMagazine();
-                shooter.shootBullet();
-                gunModel.CanShoot = false;
-                shooter.WaitDelay(gunModel.FireDelay);
-            }
-        }
+        gun.Reload();
     }
 
-    public void AllowShoot(GameObject gunGameObject)
+    public void Shoot(AGun gun)
     {
-        if (!(gunModelLinks.ContainsKey(gunGameObject)))
-            throw new KeyNotFoundException("Ce gun n'a pas de modèle métier lié");
-        gunModelLinks[gunGameObject].CanShoot = true;
+        gun.DecreaseNbBulletInMagazine();
     }
 }

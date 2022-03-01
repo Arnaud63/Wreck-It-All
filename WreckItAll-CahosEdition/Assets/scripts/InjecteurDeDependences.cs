@@ -6,7 +6,7 @@ public class InjecteurDeDependences : MonoInstaller
 {
     public override void InstallBindings()
     {
-        Container.Bind<GunManager>().AsSingle(); //peut etre injecte 1 fois
+        Container.Bind<WeaponGlueCode>().AsSingle();
         Container.Bind<PistolSpawner>().AsTransient();
     }
 }

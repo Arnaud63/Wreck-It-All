@@ -6,6 +6,13 @@ public abstract class AGun : IWeapon
 {
     protected int magazine;
     protected int magazineSize;
+    public float ReloadingTime
+    {
+        get
+        {
+            return reloadingTime;
+        }
+    }
     protected float reloadingTime;
     public float FireDelay {
         get {

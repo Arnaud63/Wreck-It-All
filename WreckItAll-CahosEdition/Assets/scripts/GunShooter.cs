@@ -3,13 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using Zenject;
 
-public class GunShooter : MonoBehaviour, IShooter
+public class GunShooter : MonoBehaviour, IGunCoolDown
 {
+    private bool isInCoolDown = false;
+
     [SerializeField]
     private GameObject bulletPrefab;
 
-    //[Inject]
-    public GunManager gunManager { get; set; }
+    [Inject]
+    WeaponGlueCode weaponGlueCode;
 
     private void Awake()
     {
@@ -18,25 +20,31 @@ public class GunShooter : MonoBehaviour, IShooter
 
     public void Update(){
         if (Input.GetButtonDown("Fire1")){
-            gunManager.shoot(this.gameObject, this);
+            if (!isInCoolDown)
+                weaponGlueCode.Shoot(this.gameObject, this);
         }
     }
 
-    public void WaitDelay(float delay)
-    {
-        Invoke("AllowShootCall", delay);
-    }
-
-    public void AllowShootCall()
-    {
-        gunManager.AllowShoot(this.gameObject);
-    }
-
-    public void shootBullet(){
-        Debug.Log("tire");
+    public void ShootBullet(){
         var bullet = GameObject.Instantiate(bulletPrefab,
             this.gameObject.transform.position,
             this.gameObject.transform.rotation);
         Destroy(bullet, 5);
+    }
+
+    public void StartCoolDown(float delay)
+    {
+        isInCoolDown = true;
+        WaitDelay(delay);
+    }
+
+    public void EndCoolDown()
+    {
+        isInCoolDown = false;
+    }
+
+    public void WaitDelay(float delay)
+    {
+        Invoke("EndCoolDown", delay);
     }
 }

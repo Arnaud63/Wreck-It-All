@@ -6,7 +6,9 @@ using Zenject;
 public class SpawnPistol : MonoBehaviour
 {
     [Inject]
-    private PistolSpawner pistolSpawner;
+    private WeaponGlueCode weaponGlueCode;
+    [Inject]
+    public PistolSpawner weaponSpawner;
 
     [SerializeField]
     private GameObject pistolPrefab;
@@ -17,19 +19,9 @@ public class SpawnPistol : MonoBehaviour
     [SerializeField]
     private float spawnZ;
 
+
     void Awake()
     {
-        pistolSpawner.SpawnWeapon(pistolPrefab, spawnX, spawnY, spawnZ);
-    }
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        weaponGlueCode.SpawnWeapon(weaponSpawner, pistolPrefab, spawnX, spawnY, spawnZ);
     }
 }
