@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using Zenject;
 
-public class Pistol : AGun
+public class AK : AGun
 {
-    public Pistol() : base(6, 2, 0.1f)
+    public AK() : base(6, 2, 0.1f)
     {
     }
 }

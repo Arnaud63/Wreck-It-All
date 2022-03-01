@@ -5,30 +5,38 @@ using Zenject;
 
 public class GunShooter : MonoBehaviour, IGunCoolDown
 {
+    [Inject]
+    private WeaponManager weaponGlueCode;
+
+    [Inject]
+    private InjectedPrefabFactory injectedPrefabFactory;
+
     private bool isInCoolDown = false;
 
     [SerializeField]
     private GameObject bulletPrefab;
-
-    [Inject]
-    WeaponGlueCode weaponGlueCode;
 
     private void Awake()
     {
         if (bulletPrefab == null) throw new MissingComponentException("Le préfab de bullet n'a pas été renseigné");
     }
 
-    public void Update(){
-        if (Input.GetButtonDown("Fire1")){
+    public void Update()
+    {
+        if (Input.GetButtonDown("Fire1"))
+        {
             if (!isInCoolDown)
+            {
                 weaponGlueCode.Shoot(this.gameObject, this);
+            }  
         }
     }
 
     public void ShootBullet(){
-        var bullet = GameObject.Instantiate(bulletPrefab,
-            this.gameObject.transform.position,
-            this.gameObject.transform.rotation);
+        var bullet = injectedPrefabFactory.InstantiateInjectedPrefab(bulletPrefab,
+            gameObject.transform.localPosition,
+            gameObject.transform.localRotation);
+        weaponGlueCode.LinkGameObjectToIWeaoon(bullet, new Bullet());
         Destroy(bullet, 5);
     }
 

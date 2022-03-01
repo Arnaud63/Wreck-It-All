@@ -15,4 +15,9 @@ public abstract class AWeaponGlueCode
     {
         linksGameObjectAndIWeapon.Add(gameObject, weapon);
     }
+
+    public void DestroyLinkGameObjectIWeaoon(GameObject gameObject)
+    {
+        linksGameObjectAndIWeapon.Remove(gameObject);
+    }
 }

@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WeaponGlueCode : AWeaponGlueCode
+public class WeaponManager : AWeaponGlueCode, ISpawnWeapon
 {
     private GunManager gunManager;
-    public WeaponGlueCode()
+    public WeaponManager()
     {
         gunManager = new GunManager();
     }
@@ -13,20 +13,21 @@ public class WeaponGlueCode : AWeaponGlueCode
     {
         if (!(linksGameObjectAndIWeapon.ContainsKey(weaponGameObject)))
             throw new KeyNotFoundException("This weapon has no model's instance linked !");
-        if (!typeof(AGun).IsInstanceOfType(linksGameObjectAndIWeapon[weaponGameObject]))
-            return;
-        AGun gun = (AGun) linksGameObjectAndIWeapon[weaponGameObject];
-        if (gunManager.IsMagazineEmpty(gun))
+        //if (!typeof(AGun).IsInstanceOfType(linksGameObjectAndIWeapon[weaponGameObject]))
+        if (linksGameObjectAndIWeapon[weaponGameObject] is AGun gun)
         {
-            gunManager.Reload(gun);
-            gunShooter.StartCoolDown(gun.ReloadingTime);
-            return;
-        }
-        else
-        {
-            gunManager.Shoot(gun);
-            gunShooter.ShootBullet();
-            gunShooter.StartCoolDown(gun.FireDelay);
+            if (gunManager.IsMagazineEmpty(gun))
+            {
+                gunManager.Reload(gun);
+                gunShooter.StartCoolDown(gun.ReloadingTime);
+                return;
+            }
+            else
+            {
+                gunManager.Shoot(gun);
+                gunShooter.ShootBullet();
+                gunShooter.StartCoolDown(gun.FireDelay);
+            }
         }
     }
 
