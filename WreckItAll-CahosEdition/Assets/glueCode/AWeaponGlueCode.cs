@@ -20,4 +20,9 @@ public abstract class AWeaponGlueCode
     {
         linksGameObjectAndIWeapon.Remove(gameObject);
     }
+
+    public bool ContainsGameObject(GameObject gameObject)
+    {
+        return linksGameObjectAndIWeapon.ContainsKey(gameObject);
+    }
 }
