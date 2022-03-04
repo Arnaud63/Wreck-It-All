@@ -8,6 +8,7 @@ public class HitManager : MonoBehaviour
 
     private void OnMouseDown()
     {
+        Debug.Log("Mouse Down");
         Instantiate(destroyedVersion, GetComponent<Transform>().position, GetComponent<Transform>().rotation);
         Destroy(gameObject);
     }
