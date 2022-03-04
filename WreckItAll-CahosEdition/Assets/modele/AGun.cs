@@ -34,9 +34,10 @@ public abstract class AGun : IWeapon
     private bool canShoot;
 
     protected AGun(int magazineSize, float reloadingTime, float fireDelay){
-        this.magazineSize = 30;
+        this.magazineSize = magazineSize;
         magazine = magazineSize;
         this.reloadingTime = reloadingTime;
+        this.fireDelay = fireDelay;
         canShoot = true;
         Debug.Log("Arme instanciée");
     }
