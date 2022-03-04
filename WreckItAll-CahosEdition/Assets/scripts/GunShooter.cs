@@ -35,7 +35,7 @@ public class GunShooter : MonoBehaviour, IGunCoolDown
     public void ShootBullet(){
         var bullet = injectedPrefabFactory.InstantiateInjectedPrefab(bulletPrefab,
             gameObject.transform.localPosition,
-            gameObject.transform.localRotation);
+            gameObject.transform.rotation);
         weaponGlueCode.LinkGameObjectToIWeaoon(bullet, new Bullet());
         Destroy(bullet, 5);
     }
