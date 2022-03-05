@@ -110,7 +110,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c59aa04b34d90594c9e895f1e3587004, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
+  speed: 10
 --- !u!114 &5198960662055123334
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -123,7 +123,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: add6f7047390e104e8dad57d8938b7f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  explodedPrefab: {fileID: 6577620652142960830, guid: 943159ff798ccd846b4b929851f4fbc2, type: 3}
+  explodedPrefab: {fileID: 13709671401417726, guid: 992908dfd3299d447969656d6dde2767, type: 3}
 --- !u!54 &6795713790415287591
 Rigidbody:
   m_ObjectHideFlags: 0
