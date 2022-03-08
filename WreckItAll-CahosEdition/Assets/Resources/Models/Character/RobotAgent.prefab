@@ -1797,9 +1797,9 @@ GameObject:
   - component: {fileID: 4716900279413811567}
   - component: {fileID: 4716900279413811564}
   - component: {fileID: -4922333508059416212}
-  - component: {fileID: -3808600142173160429}
   - component: {fileID: 6487281388710464824}
   - component: {fileID: 45726072}
+  - component: {fileID: -7486430494324633216}
   m_Layer: 0
   m_Name: RobotAgent
   m_TagString: Untagged
@@ -1877,18 +1877,6 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &-3808600142173160429
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5599278366192276536}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 80197b02ef646cd4088f23aa90c90d6d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!54 &6487281388710464824
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1915,6 +1903,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3e7b6c0ccb38bc04e96b337824cb3ef8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &-7486430494324633216
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5599278366192276536}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 967b962ac878caf41a147415bc3c851a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &5652241062363297635

@@ -38,7 +38,7 @@ public class RobotTouched : MonoBehaviour
         ChangeIsKinematicState(false);
         this.GetComponent<animationStateController>().enabled = false;
         this.GetComponent<NavMeshAgent>().enabled = false;
-        this.GetComponent<PlayerController>().enabled = false;
+        this.GetComponent<NavMeshAgentController>().enabled = false;
     }
 
     private void ToggleAnimation()
@@ -48,7 +48,7 @@ public class RobotTouched : MonoBehaviour
         ChangeIsKinematicState(true);
         this.GetComponent<animationStateController>().enabled = true;
         this.GetComponent<NavMeshAgent>().enabled = true;
-        this.GetComponent<PlayerController>().enabled = true;
+        this.GetComponent<NavMeshAgentController>().enabled = true;
     }
 
     private void ChangeCollidersState(bool state)
