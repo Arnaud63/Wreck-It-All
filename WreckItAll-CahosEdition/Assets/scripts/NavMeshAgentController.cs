@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class PlayerController : MonoBehaviour
+public class NavMeshAgentController : MonoBehaviour
 {
     private Transform EntityToFollow;
     private NavMeshAgent agent;
@@ -27,9 +27,10 @@ public class PlayerController : MonoBehaviour
         {
             this.playerAnimator.SetBool("isWalking", false);
         }
-        if(agent.remainingDistance <= agent.stoppingDistance)
+        if (agent.remainingDistance <= agent.stoppingDistance)
         {
             this.transform.LookAt(this.EntityToFollow);
         }
     }
 }
+
