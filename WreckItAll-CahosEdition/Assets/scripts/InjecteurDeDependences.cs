@@ -7,9 +7,10 @@ public class InjecteurDeDependences : MonoInstaller
     public override void InstallBindings() 
     {
         Container.BindInstance(new InjectedPrefabFactory(Container));
+        Container.Bind<WeaponManager>().AsSingle();
+        Container.Bind<EnemysManager>().AsSingle();
         Container.Bind<IWeaponSpawner>().To<AKSpawner>().AsTransient().WhenInjectedInto<SpawnAK>();
         Container.Bind<IWeaponSpawner>().To<SwordSpawner>().AsTransient().WhenInjectedInto<SpawnSword>();
-        Container.Bind<WeaponManager>().AsSingle();
     }
 }
 

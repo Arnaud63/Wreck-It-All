@@ -2,9 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using Zenject;
 
 public class RobotTouched : MonoBehaviour
 {
+    [Inject]
+    private EnemysManager enemysManager;
+    [Inject]
+    private WeaponManager weaponManager;
+
     private static int DESPAWN_TIME = 10;
 
     // Start is called before the first frame update
@@ -13,6 +19,14 @@ public class RobotTouched : MonoBehaviour
         this.ToggleAnimation();
         ChangeIsKinematicState(true);
         ChangeCollisionDetectionMode(CollisionDetectionMode.ContinuousSpeculative);
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (enemysManager.ContainsGameObject(collision.collider.gameObject.transform.root.gameObject)) return;
+        
+        enemysManager.DestroyLinkGameObjectIEnemy(collision.collider.gameObject);
+        OnTouched();
     }
 
     // Update is called once per frame
