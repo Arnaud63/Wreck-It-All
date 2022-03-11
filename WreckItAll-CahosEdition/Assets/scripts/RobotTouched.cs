@@ -24,7 +24,8 @@ public class RobotTouched : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         if (enemysManager.ContainsGameObject(collision.collider.gameObject.transform.root.gameObject)) return;
-        
+        //Devrait y avoir un test si c'est une IWeapon mais ça ne fonctionne pas, tout ce qui entre en
+        //collision avec l'ennemy est considéré comme pas une IWeapon
         enemysManager.DestroyLinkGameObjectIEnemy(collision.collider.gameObject);
         OnTouched();
     }
