@@ -11,6 +11,8 @@ public class InjecteurDeDependences : MonoInstaller
         Container.Bind<EnemysManager>().AsSingle();
         Container.Bind<IWeaponSpawner>().To<AKSpawner>().AsTransient().WhenInjectedInto<SpawnAK>();
         Container.Bind<IWeaponSpawner>().To<SwordSpawner>().AsTransient().WhenInjectedInto<SpawnSword>();
+        Container.Bind<IWeaponSpawner>().To<SpearSpawner>().AsTransient().WhenInjectedInto<SpawnSpear>();
+        Container.Bind<IWeaponSpawner>().To<PistolSpawner>().AsTransient().WhenInjectedInto<SpawnPistol>();
     }
 }
 

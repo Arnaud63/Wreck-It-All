@@ -12,16 +12,10 @@ public class SpawnSword : MonoBehaviour
 
     [SerializeField]
     private GameObject SwordPrefab;
-    [SerializeField]
-    private float spawnX;
-    [SerializeField]
-    private float spawnY;
-    [SerializeField]
-    private float spawnZ;
 
 
     void Awake()
     {
-        weaponGlueCode.SpawnWeapon(weaponSpawner, SwordPrefab, spawnX, spawnY, spawnZ);
+        weaponGlueCode.SpawnWeapon(weaponSpawner, SwordPrefab, gameObject.transform);
     }
 }

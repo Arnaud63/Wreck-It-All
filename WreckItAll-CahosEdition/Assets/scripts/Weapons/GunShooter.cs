@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using Zenject;
 
+/// <summary>
+/// 
+/// </summary>
 public class GunShooter : MonoBehaviour, IGunCoolDown
 {
     [Inject]
@@ -27,7 +30,7 @@ public class GunShooter : MonoBehaviour, IGunCoolDown
         {
             if (!isInCoolDown)
             {
-                weaponGlueCode.Shoot(this.gameObject, this);
+                weaponGlueCode.Shoot(gameObject, this);
             }  
         }
     }
