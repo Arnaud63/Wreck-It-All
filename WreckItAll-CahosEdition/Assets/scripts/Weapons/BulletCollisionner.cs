@@ -8,6 +8,9 @@ public class BulletCollisionner : MonoBehaviour
     [Inject]
     private WeaponManager weaponGlueCode;
 
+    [Inject]
+    private InjectedPrefabFactory injectedPrefabFactory;
+
     [SerializeField]
     private GameObject explodedPrefab;
 
@@ -19,8 +22,10 @@ public class BulletCollisionner : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         if (weaponGlueCode.ContainsGameObject(collision.collider.gameObject)) return;
+        if (!weaponGlueCode.ContainsGameObject(gameObject)) return;
+        var bulletBits = injectedPrefabFactory.InstantiateInjectedPrefab(
+            explodedPrefab, gameObject.transform.position, Quaternion.identity);
         weaponGlueCode.DestroyLinkGameObjectIWeaoon(gameObject);
-        Instantiate(explodedPrefab, gameObject.transform.position, Quaternion.identity);
-        Destroy(this.gameObject);
+        Destroy(this.gameObject, 0.1f);
     }
 }

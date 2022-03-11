@@ -4,11 +4,13 @@ using System.Collections;
 
 public class InjecteurDeDependences : MonoInstaller
 {
-    public override void InstallBindings()
+    public override void InstallBindings() 
     {
         Container.BindInstance(new InjectedPrefabFactory(Container));
-        Container.Bind<IWeaponSpawner>().To<AKSpawner>().AsTransient();
         Container.Bind<WeaponManager>().AsSingle();
+        Container.Bind<EnemysManager>().AsSingle();
+        Container.Bind<IWeaponSpawner>().To<AKSpawner>().AsTransient().WhenInjectedInto<SpawnAK>();
+        Container.Bind<IWeaponSpawner>().To<SwordSpawner>().AsTransient().WhenInjectedInto<SpawnSword>();
     }
 }
 
