@@ -37,7 +37,7 @@ public class RobotTouched : MonoBehaviour
     {
         if (enemysManager.ContainsGameObject(collision.collider.gameObject.transform.root.gameObject)) return;
         //Devrait y avoir un test si c'est une IWeapon mais ça ne fonctionne pas, tout ce qui entre en
-        //collision avec l'ennemy est considéré comme pas une IWeapon
+        //collision avec l'ennemy est considéré comme pas une IWeapon même les IWeapons
         enemysManager.DestroyLinkGameObjectIEnemy(collision.collider.gameObject);
         OnTouched(collision.relativeVelocity, limbCollided);
     }
@@ -50,6 +50,7 @@ public class RobotTouched : MonoBehaviour
 
     public void OnTouched(Vector3 relativeVelocity, Rigidbody limbCollided)
     {
+        Debug.Log(relativeVelocity.magnitude);
         this.ToggleRagdoll(relativeVelocity, limbCollided);
         Destroy(this.gameObject, DESPAWN_TIME);
     }
