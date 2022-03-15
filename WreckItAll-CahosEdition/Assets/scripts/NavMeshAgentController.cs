@@ -19,17 +19,25 @@ public class NavMeshAgentController : MonoBehaviour
     void FixedUpdate()
     {
         this.agent.SetDestination(EntityToFollow.position);
-        if (agent.velocity != Vector3.zero)
+        if (agent.velocity.normalized.magnitude > 0.3)
         {
-            this.playerAnimator.SetBool("isWalking", true);
+            this.playerAnimator.SetInteger("CombatMoves", 0);
+            this.playerAnimator.SetBool("isFighting", false);
+            this.playerAnimator.SetBool("isWalking", true); 
         }
         else
         {
             this.playerAnimator.SetBool("isWalking", false);
-        }
-        if (agent.remainingDistance <= agent.stoppingDistance)
-        {
-            this.transform.LookAt(this.EntityToFollow);
+            this.playerAnimator.SetBool("isFighting", true);
+            if (agent.remainingDistance > agent.stoppingDistance)
+            {
+                this.playerAnimator.SetInteger("CombatMoves", 0);
+            }
+            else
+            {
+                this.playerAnimator.SetInteger("CombatMoves", Random.Range(1, 5));
+                this.transform.LookAt(this.EntityToFollow);
+            }           
         }
     }
 }
