@@ -16,16 +16,9 @@ public class SpawnAK : MonoBehaviour
 
     [SerializeField]
     private GameObject AKPrefab;
-    [SerializeField]
-    private float spawnX;
-    [SerializeField]
-    private float spawnY;
-    [SerializeField]
-    private float spawnZ;
-
 
     void Awake()
     {
-        weaponGlueCode.SpawnWeapon(weaponSpawner, AKPrefab, spawnX, spawnY, spawnZ);
+        weaponGlueCode.SpawnWeapon(weaponSpawner, AKPrefab, gameObject.transform);
     }
 }

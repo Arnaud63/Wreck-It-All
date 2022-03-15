@@ -7,10 +7,10 @@ public class SwordSpawner : IWeaponSpawner
 {
     [Inject]
     private InjectedPrefabFactory injectedPrefabFactory;
-    public void SpawnWeapon(WeaponManager weaponGlueCode, GameObject prefab, float spawnX, float spawnY, float spawnZ)
+    public void SpawnWeapon(WeaponManager weaponGlueCode, GameObject prefab, Transform transform)
     {
         GameObject sword = injectedPrefabFactory.InstantiateInjectedPrefab(prefab,
-            new Vector3(spawnX, spawnY, spawnZ));
+            transform.position, transform.rotation);
 
         IWeapon swordData = new Sword(1);
         weaponGlueCode.LinkGameObjectToIWeaoon(sword, swordData);

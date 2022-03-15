@@ -55,8 +55,8 @@ public class WeaponManager : ISpawnWeapon
         }
     }
 
-    public void SpawnWeapon(IWeaponSpawner spawner, GameObject prefab, float spawnX, float spawnY, float spawnZ)
+    public void SpawnWeapon(IWeaponSpawner spawner, GameObject prefab, Transform transform)
     {
-        spawner.SpawnWeapon(this, prefab, spawnX, spawnY, spawnZ);
+        spawner.SpawnWeapon(this, prefab, transform);
     }
 }
