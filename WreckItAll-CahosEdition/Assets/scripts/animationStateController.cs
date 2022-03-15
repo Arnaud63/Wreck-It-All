@@ -21,6 +21,7 @@ public class animationStateController : MonoBehaviour
         bool isWalking = characterAnimator.GetBool(isWalkingHash);
         bool forwardPressed = Input.GetKey("z");
 
+        /*
         if(!isWalking && forwardPressed)
         {
             characterAnimator.SetBool(isWalkingHash, true);
@@ -30,5 +31,6 @@ public class animationStateController : MonoBehaviour
         {
             characterAnimator.SetBool(isWalkingHash, false);
         }
+        */
     }
 }
