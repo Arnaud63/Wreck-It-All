@@ -17,8 +17,8 @@ public class RobotTouched : MonoBehaviour
     void Start()
     {
         this.ToggleAnimation();
-        ChangeIsKinematicState(true);
         ChangeCollisionDetectionMode(CollisionDetectionMode.ContinuousSpeculative);
+        ChangeIsKinematicState(true);
         AddLimbCollisionOnChild();
     }
 
