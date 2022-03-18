@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 9184407261259328327}
   - component: {fileID: -4174943133552219617}
   - component: {fileID: 5198960662055123334}
-  - component: {fileID: 6795713790415287591}
+  - component: {fileID: 326669715553173831}
   m_Layer: 0
   m_Name: BulletPrefab
   m_TagString: Untagged
@@ -124,7 +124,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   explodedPrefab: {fileID: 13709671401417726, guid: 992908dfd3299d447969656d6dde2767, type: 3}
---- !u!54 &6795713790415287591
+--- !u!54 &326669715553173831
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
