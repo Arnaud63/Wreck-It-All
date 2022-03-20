@@ -5,7 +5,7 @@
       "app_key": "application.generated.unity.wreckitallcahosedition.exe",
       "launch_type": "url",
       "url": "steam://launch/",
-      "action_manifest_path": "C:\\Users\\duboi\\Desktop\\IUT-DISTANCIEL\\Cours\\2A\\P3\\VR\\wreckitall\\WreckItAll-CahosEdition\\Assets\\StreamingAssets\\SteamVR\\actions.json",
+      "action_manifest_path": "D:\\wreckitall-main\\wreckitall-main\\WreckItAll-CahosEdition\\Assets\\StreamingAssets\\SteamVR\\actions.json",
       "strings": {
         "en_us": {
           "name": "WreckItAll-CahosEdition [Testing]"

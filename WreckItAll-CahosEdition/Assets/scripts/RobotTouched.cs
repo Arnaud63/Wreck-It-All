@@ -17,8 +17,8 @@ public class RobotTouched : MonoBehaviour
     void Start()
     {
         this.ToggleAnimation();
-        ChangeCollisionDetectionMode(CollisionDetectionMode.ContinuousSpeculative);
         ChangeIsKinematicState(true);
+        ChangeCollisionDetectionMode(CollisionDetectionMode.ContinuousSpeculative);
         AddLimbCollisionOnChild();
     }
 
@@ -37,7 +37,7 @@ public class RobotTouched : MonoBehaviour
     {
         if (enemysManager.ContainsGameObject(collision.collider.gameObject.transform.root.gameObject)) return;
         //Devrait y avoir un test si c'est une IWeapon mais ça ne fonctionne pas, tout ce qui entre en
-        //collision avec l'ennemy est considéré comme pas une IWeapon même les IWeapons
+        //collision avec l'ennemy est considéré comme pas une IWeapon
         enemysManager.DestroyLinkGameObjectIEnemy(collision.collider.gameObject);
         OnTouched(collision.relativeVelocity, limbCollided);
     }
@@ -62,7 +62,7 @@ public class RobotTouched : MonoBehaviour
         this.GetComponent<animationStateController>().enabled = false;
         this.GetComponent<NavMeshAgent>().enabled = false;
         this.GetComponent<NavMeshAgentController>().enabled = false;
-        limbCollided.AddForce(relativeVelocity * 50);
+        limbCollided.AddForce(relativeVelocity);
     }
 
     private void ToggleAnimation()

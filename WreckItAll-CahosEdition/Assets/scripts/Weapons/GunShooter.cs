@@ -9,7 +9,9 @@ using Zenject;
 public class GunShooter : MonoBehaviour, IGunCoolDown
 {
     [Inject]
-    private WeaponManager weaponGlueCode;
+    private WeaponManager _weaponGlueCode;
+
+    public WeaponManager WeaponGlueCode { get { return _weaponGlueCode; } }
 
     [Inject]
     private InjectedPrefabFactory injectedPrefabFactory;
@@ -24,22 +26,19 @@ public class GunShooter : MonoBehaviour, IGunCoolDown
         if (bulletPrefab == null) throw new MissingComponentException("Le préfab de bullet n'a pas été renseigné");
     }
 
-    public void Update()
+    public void AskShoot()
     {
-        if (Input.GetButton("Fire1"))
+        if (!isInCoolDown)
         {
-            if (!isInCoolDown)
-            {
-                weaponGlueCode.Shoot(gameObject, this);
-            }  
+            _weaponGlueCode.Shoot(gameObject, this);
         }
     }
 
     public void ShootBullet(){
         var bullet = injectedPrefabFactory.InstantiateInjectedPrefab(bulletPrefab,
-            gameObject.transform.position,
+            gameObject.transform.position-gameObject.transform.forward,
             gameObject.transform.rotation);
-        weaponGlueCode.LinkGameObjectToIWeaoon(bullet, new Bullet());
+        _weaponGlueCode.LinkGameObjectToIWeaoon(bullet, new Bullet());
         Destroy(bullet, 5);
     }
 
