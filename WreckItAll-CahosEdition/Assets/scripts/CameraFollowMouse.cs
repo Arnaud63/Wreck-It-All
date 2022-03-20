@@ -13,12 +13,13 @@ public class CameraFollowMouse : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        this.fpsPlayer = GetComponent<Transform>().root;
+        this.fpsPlayer = GetComponent<Transform>().parent;
         Cursor.lockState = CursorLockMode.Locked;
     }
 
     void Update()
     {
+        Cursor.lockState = CursorLockMode.Locked;
         float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity;
         float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity;
 
@@ -26,8 +27,7 @@ public class CameraFollowMouse : MonoBehaviour
 
         xRotation -= mouseY;
         xRotation = Mathf.Clamp(xRotation, -90f, 90f);
-        //GetComponent<Transform>().localRotation = Quaternion.Euler(xRotation, 0, 0);
-        this.fpsPlayer.localRotation = Quaternion.Euler(xRotation, 0, 0);
+        GetComponent<Transform>().localRotation = Quaternion.Euler(xRotation, 0, 0);
 
     }
 }

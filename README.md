@@ -16,3 +16,12 @@ Assets :
 	- SteamVR
 
 Modèle casque VR: HTC Vive
+
+Vidéo de Présentation du projet : [Lien](https://drive.google.com/file/d/1WAPED7_LIjre0lfN1818DB6Mqqi68Xi8/view?usp=sharing)
+
+Le projet contient 2 scenes permettant de lancer le jeu :
+- La première `SampleScene` permet de lancer le jeu en mode VR. Une fois le casque HTC VIVE connecté à la machine
+- La scene `zeroHTC` permet de lancer le jeu en mode jeu de tir fps ne nécessitant pas de casque HTC
+Dans ce mode de jeu, le joueur peut seulement viser autour de lui et tirer avec l'AK47. Il s'agit d'une version simplifiée du jeu servant principalement de démonstration
+
+La version sans HTC est par ailleurs téléchargeable en version buildé via ce [Lien](https://ucafr-my.sharepoint.com/:u:/g/personal/arnaud_allemand_etu_uca_fr/EUGRfu4Yb31ChLE_FWKldpcBM8QXpDgoBhsiV4e93-5jLQ?e=UBvrmJ)

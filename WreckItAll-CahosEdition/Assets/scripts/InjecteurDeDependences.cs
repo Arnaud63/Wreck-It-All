@@ -13,6 +13,7 @@ public class InjecteurDeDependences : MonoInstaller
         Container.Bind<IWeaponSpawner>().To<SwordSpawner>().AsTransient().WhenInjectedInto<SpawnSword>();
         Container.Bind<IWeaponSpawner>().To<SpearSpawner>().AsTransient().WhenInjectedInto<SpawnSpear>();
         Container.Bind<IWeaponSpawner>().To<PistolSpawner>().AsTransient().WhenInjectedInto<SpawnPistol>();
+        Container.Bind<IWeaponSpawner>().To<StaticPistolSpawner>().AsTransient().WhenInjectedInto<SpawnStaticPistol>();
     }
 }
 

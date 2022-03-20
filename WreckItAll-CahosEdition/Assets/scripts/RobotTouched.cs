@@ -50,7 +50,6 @@ public class RobotTouched : MonoBehaviour
 
     public void OnTouched(Vector3 relativeVelocity, Rigidbody limbCollided)
     {
-        Debug.Log(relativeVelocity.magnitude);
         this.ToggleRagdoll(relativeVelocity, limbCollided);
         Destroy(this.gameObject, DESPAWN_TIME);
     }
