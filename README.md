@@ -17,7 +17,7 @@ Assets :
 
 Modèle casque VR: HTC Vive
 
-Vidéo de Présentation du projet : [Lien](https://drive.google.com/file/d/1WAPED7_LIjre0lfN1818DB6Mqqi68Xi8/view?usp=sharing)
+Vidéo de Présentation du projet : [Lien](https://youtu.be/8iboU_6Mf8g)
 
 Le projet contient 2 scenes permettant de lancer le jeu :
 - La première `SampleScene` permet de lancer le jeu en mode VR. Une fois le casque HTC VIVE connecté à la machine
